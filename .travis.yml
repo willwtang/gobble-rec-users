@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - '6.2'
+services:
+  # gobble-template does not use MySQL, but this should serve as a useful reference
+  - mysql
+before_install:
+  - mysql -e "CREATE DATABASE IF NOT EXISTS db_name_here" -uroot
+script:
+  - npm run lint
+  # See https://travis-ci.org/gobble43/gobble-template/settings for pre-configured Environment Variables
+  - NODE_ENV=test node src/app.js & npm test
