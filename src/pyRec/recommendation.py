@@ -1,6 +1,19 @@
 from numpy import dot, linalg, average, array
 import heapq 
 from math import trunc
+from json import dumps, loads
+from sys import stdin, stdout
+
+# print(dumps(555555555))
+# try: 
+#   lines = stdin.readlines()
+#   print lines
+# except:
+#   print("Unexpected error:", sys.exc_info()[0])
+
+from sys import argv
+print argv
+# print dumps(stdin)
 
 class NLargest(list):
   def __init__(self, size):
@@ -93,8 +106,8 @@ dataSet = {
 "Veronica": {"Blues Traveler": 3.0, "Norah Jones": 5.0, "Phoenix": 4.0, "Slightly Stoopid": 2.5, "The Strokes": 3.0}
 }
 
-a = Recommendation(dataSet, 5, 3)
-print (a.allRecommendations())
+# a = Recommendation(dataSet, 5, 3)
+# print (dumps(a.allRecommendations()))
 
 
 
