@@ -72,7 +72,7 @@ class Recommendation:
 
     recList = [(recommendations[item], item) for item in recommendations]
     heapq.heapify(recList)
-    return heapq.nlargest(self.__numRec, recList)
+    # return heapq.nlargest(self.__numRec, recList)
     return [rec[1] for rec in heapq.nlargest(self.__numRec, recList)]
       
   def allRecommendations(self):

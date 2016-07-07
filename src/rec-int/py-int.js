@@ -9,8 +9,10 @@ const pyConnect = function(json) {
     args: [JSON.stringify(json)],
     pythonPath: '/Library/Frameworks/Python.framework/Versions/3.5/bin/python3',
   };
-  const pyConnection = new PythonShell('redisConnect.py', pythonConfig);
+  const pyConnection = new PythonShell('hub.py', pythonConfig);
   pyConnection.on('message', message => console.log(message));
 };
 
-module.exports = { pyConnect };
+// pyConnect(data)
+
+module.exports = pyConnect;
