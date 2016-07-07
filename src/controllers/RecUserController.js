@@ -6,7 +6,7 @@ const getRecommendationsByUser = function(userId) {
   return get(userId)
     .then(res => {
       const upcs = res.map(upc => `upc=${upc}`).join('&');
-      return fetch(`${gobbleDB}/db/recuser/product?${upcs}`).then(res => res.json());
+      return fetch(`${gobbleDB}/db/recuser/product?${upcs}`).then(results => results.json());
     });
 };
 
