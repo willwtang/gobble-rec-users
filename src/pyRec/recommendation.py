@@ -1,8 +1,6 @@
 from numpy import dot, linalg, average, array
 import heapq 
 from math import trunc
-from json import dumps, loads
-from sys import argv
 
 class NLargest(list):
   def __init__(self, size):
@@ -22,9 +20,9 @@ class Recommendation:
     self.__numNeighbors = numNeigh
 
   def __cosDistance(self, vector1, vector2):
-    preferences1 = array(vector1) - average(vector1)
-    preferences2 = array(vector2) - average(vector2)
-    result = dot(preferences1, preferences2) / (linalg.norm(preferences1) * linalg.norm(preferences2));
+    preferences1 = array(vector1)
+    preferences2 = array(vector2)
+    result = dot(preferences1, preferences2) / (linalg.norm(preferences1) * linalg.norm(preferences2))
     return trunc(round(result, 4) * 10000) / 10000
 
   def __calculateDistances(self, user1, user2):
@@ -52,11 +50,10 @@ class Recommendation:
 
   def __compare(self, user, neighbor, total, recommendations):
     distance, neighborId = neighbor
-    weight = distance / total
+    weight = distance / total if total != 0 else 1 / self.__numNeighbors
 
     userItems = self.__data[user]
     neighborItems = self.__data[neighborId]
-
     for item in neighborItems:
       if item in userItems: continue
       if not item in recommendations: 
@@ -76,23 +73,10 @@ class Recommendation:
     recList = [(recommendations[item], item) for item in recommendations]
     heapq.heapify(recList)
     return heapq.nlargest(self.__numRec, recList)
+    return [rec[1] for rec in heapq.nlargest(self.__numRec, recList)]
       
   def allRecommendations(self):
     results = {}
     for user in self.__data:
       results[user] = self.recommend(user)
     return results
-
-def recommend(data):
-  recs = Recommendation(data, 5, 5);
-  print (dumps(recs.allRecommendations()))
-
-print (recommend(loads(argv[1])));
-
-
-
-
-
-
-
-
