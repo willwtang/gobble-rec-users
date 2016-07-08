@@ -3,6 +3,7 @@
 node_modules
 npm-debug.log
 
+dump.rdb
 src/pyRec/__pycache__/*
 bundle.js
 
