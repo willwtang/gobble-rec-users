@@ -4,7 +4,7 @@ Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
 
 const connectToRedis = function() {
-  const client = redis.createClient();
+  const client = redis.createClient(1);
   return key => client.getAsync(key).then(res => JSON.parse(res));
 };
 
