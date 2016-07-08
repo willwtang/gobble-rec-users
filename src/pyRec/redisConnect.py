@@ -2,7 +2,7 @@ import redis
 
 class RedisClient:
   def __init__(self):
-    self.client = redis.StrictRedis(host='localhost', port=6379, db=0)
+    self.client = redis.StrictRedis(host='localhost', port=6379, db=1)
 
   def setJSON(self, json):
     print
