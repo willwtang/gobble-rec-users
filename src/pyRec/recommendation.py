@@ -71,6 +71,7 @@ class Recommendation:
       self.__compare(userId, neighbor, total, recommendations)
 
     recList = [(recommendations[item], item) for item in recommendations]
+    print (recList)
     heapq.heapify(recList)
     # return heapq.nlargest(self.__numRec, recList)
     return [rec[1] for rec in heapq.nlargest(self.__numRec, recList)]
