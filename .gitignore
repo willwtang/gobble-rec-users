@@ -3,7 +3,7 @@
 node_modules
 npm-debug.log
 
-src/pyRec/__pycache__/
+src/pyRec/__pycache__/*
 bundle.js
 
 env/development.env
