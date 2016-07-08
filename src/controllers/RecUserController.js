@@ -10,7 +10,6 @@ const getRecommendationsByUser = function(userId) {
     });
 };
 
-getRecommendationsByUser(2).then(res => console.log(res));
 const sendRecommendationsByUser = function(req, res) {
   const userId = req.query.facebookId;
   getRecommendationsByUser(userId)

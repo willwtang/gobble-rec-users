@@ -15,6 +15,7 @@ const morgan = require('morgan');
 app.use(morgan('dev'));
 
 require('./routes/rec-user-routes')(app);
+require('./rec-int/fetch');
 
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello, World!' });
